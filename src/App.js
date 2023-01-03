@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
 import './App.css';
 
-function App() {
+const App = () => {
+  function DateInputs() {
+    const [date1, setDate1] = useState('');
+    const [date2, setDate2] = useState('');
+
+    return (
+      <div className="container">
+        <div>
+          <h1 className="title">Current Date</h1>
+          <input
+            type="date"
+            value={date1}
+            onChange={(event) => setDate1(event.target.value)}
+            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            className="input"
+          />
+        </div>
+        <div>
+          <h1 className="title">Prev Date</h1>
+          <input
+            type="date"
+            value={date2}
+            onChange={(event) => setDate2(event.target.value)}
+            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            className="input"
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <DateInputs />
+  )
+};
 
 export default App;
